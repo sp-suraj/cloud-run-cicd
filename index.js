@@ -1,6 +1,7 @@
 import express from "express";
 
 const app = express();
+let port = process.env.PORT;
 
 app.get("/", (req, res, next) => {
   res.status(200).json([
@@ -23,6 +24,6 @@ app.get("/", (req, res, next) => {
   ]);
 });
 
-app.listen(8080, () => {
-  console.log("Listening on server 8080");
+app.listen(port, () => {
+  console.log(`Listening on server ${port}`);
 });
