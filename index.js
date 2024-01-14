@@ -23,6 +23,6 @@ app.get("/", (req, res, next) => {
   ]);
 });
 
-app.listen(4000, () => {
-  console.log("Listening on server 4000");
+app.listen(8080, () => {
+  console.log("Listening on server 8080");
 });
