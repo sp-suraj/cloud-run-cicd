@@ -1,12 +1,20 @@
-FROM node:18-slim
+# Build dependencies
+FROM node:17-alpine as dependencies
 
 WORKDIR /app
 
-COPY package*.json ./
-RUN npm install
+COPY package.json .
 
-COPY . .
+RUN npm i
 
-EXPOSE 8080
+COPY . . 
 
-CMD ["npm", "start"]
+
+# Build production image
+FROM dependencies as builder
+
+RUN npm run build
+
+EXPOSE 3000
+
+CMD npm run start

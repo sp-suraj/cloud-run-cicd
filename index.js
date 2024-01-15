@@ -1,9 +1,9 @@
 import express from "express";
 
 const app = express();
-let port = process.env.PORT;
+let port = process.env.PORT || 3000;
 
-app.get("/", (req, res, next) => {
+app.get("/api/users", (req, res, next) => {
   res.status(200).json([
     {
       id: 1,
@@ -23,6 +23,8 @@ app.get("/", (req, res, next) => {
     },
   ]);
 });
+
+app.get("/api", (req, res) => res.status(200).send("Hello World!"));
 
 app.listen(port, () => {
   console.log(`Listening on server ${port}`);
